@@ -1,7 +1,31 @@
 package hn.edu.ujcv;
 
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Queue;
+import java.util.Stack;
+
 public class ArbolBinario {
     private Nodo root;
+
+
+    public void bredthFirtsSearch(){
+        Queue<Nodo> cola = new ArrayDeque<>();
+        if(root != null)
+            cola.add(root);
+
+
+        while (!cola.isEmpty()){
+            //visitar nodo
+            Nodo nodo = cola.remove();
+            System.out.println(nodo.dato);
+            if(nodo.hijoIz!= null)
+                cola.add(nodo.hijoIz);
+            if(nodo.hijoDer!= null)
+                cola.add(nodo.hijoDer);
+        }
+
+    }
 
     public boolean isEmpty(){
         if(root == null){
@@ -35,6 +59,21 @@ public class ArbolBinario {
 
     private String preOrder() {
         return root.preOrder();
+    }
+
+    public void preOrderIterativo(){
+        Stack<Nodo> pila = new Stack<>();
+        if(root != null){
+            pila.push(root);
+        }
+        while (!pila.isEmpty()){
+            Nodo nodo = pila.pop();
+            System.out.println(nodo.dato);
+            if(nodo.hijoDer!= null)
+                pila.push(nodo.hijoDer);
+            if(nodo.hijoIz!=null)
+                pila.push(nodo.hijoIz);
+        }
     }
 
     private class Nodo {
@@ -111,6 +150,7 @@ public class ArbolBinario {
                     (hijoIz == null?"":", "+hijoIz.preOrder()) +
                     (hijoDer == null ?"":", "+hijoDer.preOrder());
         }
+
 
         @Override
         public String toString() {

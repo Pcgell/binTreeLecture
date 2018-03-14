@@ -18,6 +18,8 @@ public class Main {
         System.out.println(ab.find(16));
 
         System.out.println(ab);
+        //ab.bredthFirtsSearch();
+        ab.preOrderIterativo();
 
 
     }
